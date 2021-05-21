@@ -14,20 +14,22 @@
 2. Click `CREATE CREDENTIALS` then click `API Key`
 3. Copy the API Key and save it to your `.env` file under `GOOGLE_API_KEY`
 
-    <img src="api.png" height='250px'>
+    <img src="https://i.imgur.com/VbbT5xO.png" height='250px'>
 
 ### Google Sheet ID
+
 1. Visit your Google sheet that contains the list of students
 2. Copy the content of the URL after `/d/` and before `/edit`
 
-    <img src="id.png">
+    <img src="https://i.imgur.com/xfgRMDb.png">
+
 3. Assign the copied content to the env variable `GOOGLE_SHEET_ID`
 
 ### Google Sheet Headers
+
 1. Verify that your google sheet headers are the same as the picture
 
-    <img src="header.png">
-
+    <img src="https://i.imgur.com/Fd3mtEg.png">
 
 ### .env File
 
@@ -40,8 +42,6 @@
    - `GOOGLE_SHEET_ID` <- The id of the google sheet that contains your students, ex: `1uGr_RDNCDGjHI2v7bVHrRDFcQWERYTdtNqpQuQX_3Rw`
    - `GOOGLE_API_KEY` <- The API key that gets generated from Google's credentials page, ex: `AIQWyDNAbMOFWZ6OLwWTnUpQUEREYCAMy7HaTc`
 
-    <img src="env.png" height='250px'>
-
-
+    <img src="https://i.imgur.com/LMNlPhD.png" height='250px'>
 
 ## Demo
