@@ -1,0 +1,31 @@
+{
+  "name": "tutor-buddy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michellbrito/Tutor-Buddy.git"
+  },
+  "author": "Michell Brito",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michellbrito/Tutor-Buddy/issues"
+  },
+  "homepage": "https://github.com/michellbrito/Tutor-Buddy#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "chalk": "^4.1.1",
+    "dotenv": "^9.0.2",
+    "google-spreadsheet": "^3.1.15",
+    "inquirer": "^8.0.0",
+    "inquirer-search-list": "^1.2.6",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.33",
+    "nodemailer": "^6.6.0"
+  }
+}
