@@ -15,6 +15,22 @@ module.exports = {
     }
     return studentNames;
   },
+  getStudentEmails: async function () {
+    require("dotenv").config();
+    const { GoogleSpreadsheet } = require("google-spreadsheet");
+
+    const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID);
+    doc.useApiKey(process.env.GOOGLE_API_KEY);
+    await doc.loadInfo(); // loads sheets
+    const sheet = doc.sheetsByIndex[1]; // the first sheet
+    const rows = await sheet.getRows();
+
+    const studentEmails = [];
+    for (var i = 0; i < rows.length; i++) {
+      studentEmails.push(rows[i]["Student Email"]);
+    }
+    return studentEmails;
+  },
   getStudentClassCode: async function () {
     require("dotenv").config();
     const { GoogleSpreadsheet } = require("google-spreadsheet");

@@ -10,13 +10,23 @@ function sendEmail(data) {
     },
   });
 
-  const mailOptions = {
+  let mailOptions = {
     from: process.env.EMAIL_USERNAME,
     to: data.to,
-    cc: 'centraltutorsupport@bootcampspot.com',
+    cc: data.cc,
     subject: data.subject,
     text: data.text,
   };
+
+  if (data.bcc) {
+    mailOptions = {
+      from: process.env.EMAIL_USERNAME,
+      cc: data.cc,
+      bcc: data.bcc,
+      subject: data.subject,
+      text: data.text,
+    };
+  }
 
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
