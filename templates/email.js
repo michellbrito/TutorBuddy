@@ -1,13 +1,13 @@
 module.exports = {
-  survey: async function (studentName, classCode) {
+  survey: async function (data) {
     return `
-        Hey ${studentName},
+        Hey ${data.name},
 
         I hope you enjoyed the tutoring session! As you know after each of our session you have to fill out a suvery.
 
         Here's the suvery link: http://bit.ly/students-eval
 
-        Here's your class code which you'll need for the survey: ${classCode}
+        Here's your class code which you'll need for the survey: ${data.classCode}
 
         Sincerely,
         Michell

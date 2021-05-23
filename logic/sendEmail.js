@@ -27,6 +27,14 @@ function sendEmail(data) {
       text: data.text,
     };
   }
+  if (!data.bcc && !data.cc) {
+    mailOptions = {
+      from: process.env.EMAIL_USERNAME,
+      to: data.to,
+      subject: data.subject,
+      text: data.text,
+    };
+  }
 
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
