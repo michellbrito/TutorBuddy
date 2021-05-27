@@ -2,8 +2,9 @@ module.exports = {
   getEventID: async function (startTime) {
     require("dotenv").config();
     const axios = require("axios");
+    const calendly_user = await this.getAdminUsername();
     const response = axios.get(
-      `https://api.calendly.com/scheduled_events?user=${process.env.CALENDLY_USER}&min_start_time=${startTime}`,
+      `https://api.calendly.com/scheduled_events?user=${calendly_user}&min_start_time=${startTime}`,
       {
         headers: {
           Authorization: `Bearer ${process.env.CALENDLY_TOKEN}`,
@@ -36,4 +37,21 @@ module.exports = {
 
     return inviteeInfo;
   },
+  getAdminUsername: async function(){
+    require("dotenv").config();
+    const axios = require("axios");
+    const response = axios.get(
+      `https://api.calendly.com//users/me`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.CALENDLY_TOKEN}`,
+        },
+      }
+    );
+
+    const results = await response;
+    const username = results.data.resource.uri;
+    return username
+
+  }
 };

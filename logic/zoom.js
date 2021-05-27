@@ -3,8 +3,9 @@ module.exports = {
     require("dotenv").config();
     const moment = require("moment-timezone");
     const axios = require("axios");
+    const zoom_user = await this.getAdminUsername();
     const response = axios.get(
-      `https://api.zoom.us/v2/users/${process.env.ZOOM_USER}/meetings?type=upcoming`,
+      `https://api.zoom.us/v2/users/${zoom_user}/meetings?type=upcoming`,
       {
         headers: {
           Authorization:
@@ -28,4 +29,22 @@ module.exports = {
     }
     return upcomingEvents;
   },
+  getAdminUsername: async function(){
+    require("dotenv").config();
+    const axios = require("axios");
+    const response = axios.get(
+      `https://api.zoom.us/v2/users/`,
+      {
+        headers: {
+          Authorization:
+            `Bearer ${process.env.ZOOM_API_KEY}`, //the token is a variable which holds the token
+        },
+      }
+    );
+
+    const results = await response;
+    const username = results.data.users[0].id;
+    return username
+
+  }
 };
