@@ -41,6 +41,8 @@
    - `EMAIL_PASSWORD` <- Your email password, ex: `jane123`
    - `GOOGLE_SHEET_ID` <- The id of the google sheet that contains your students, ex: `1uGr_RDNCDGjHI2v7bVHrRDFcQWERYTdtNqpQuQX_3Rw`
    - `GOOGLE_API_KEY` <- The API key that gets generated from Google's credentials page, ex: `AIQWyDNAbMOFWZ6OLwWTnUpQUEREYCAMy7HaTc`
+   - `CALENDLY_TOKEN` <- The calendly token generated from calendly, ex: `eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovLQWYERY....`
+   - `ZOOM_API_KEY` <- The JWT Token generated from zoom, ex: `eyJ0eXAiOiJKV1QiLCQWUERY.eyJhdWQiOm51bGwss....`
 
     <img src="https://i.imgur.com/LMNlPhD.png" height='250px'>
 
