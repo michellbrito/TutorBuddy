@@ -1,13 +1,14 @@
 module.exports = {
   getUpcomingMeetings: async function () {
+    require("dotenv").config();
     const moment = require("moment-timezone");
     const axios = require("axios");
     const response = axios.get(
-      "https://api.zoom.us/v2/users/3fne5DplSIynx2-O_SqxfQ/meetings?type=upcoming",
+      `https://api.zoom.us/v2/users/${process.env.ZOOM_USER}/meetings?type=upcoming`,
       {
         headers: {
           Authorization:
-            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6ImIwRDRUVW9SUWxhZzJvdWF1WmNkVGciLCJleHAiOjE2MjIxMjk2NjcsImlhdCI6MTYyMTUyNDg2N30.LY3eT3Mfoj6LPF2IZT70Cqtv8-dWgXlXAlirzW6g2Xw", //the token is a variable which holds the token
+            `Bearer ${process.env.ZOOM_API_KEY}`, //the token is a variable which holds the token
         },
       }
     );
