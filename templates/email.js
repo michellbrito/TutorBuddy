@@ -1,5 +1,6 @@
 module.exports = {
   survey: async function (data) {
+    require("dotenv").config();
     return `
         Hey ${data.name},
 
@@ -10,16 +11,17 @@ module.exports = {
         Here's your class code which you'll need for the survey: ${data.classCode}
 
         Sincerely,
-        Michell
+        ${process.env.TUTOR_NAME}
         `;
   },
   blast: async function () {
+    require("dotenv").config();
     return `
         Hi Everyone!
 
         I hope you had a great week! I have attached a link below to schedule another tutoring session if you wish. If you are already scheduled, please ignore this email.
 
-        https://calendly.com/michellbrito
+        ${process.env.TUTOR_CALENDLY_LINK}
 
         On the Calendly page, be sure you have the correct time zone selected in the section labeled "Times are in"
 
@@ -37,9 +39,10 @@ module.exports = {
         CC Central Support on all email by always using REPLY ALL.
 
         Sincerely,
-        Michell Brito`;
+        ${process.env.TUTOR_NAME}`;
   },
   confirmation: async function (data) {
+    require("dotenv").config();
     return `
     Hi ${data.name}!
 
@@ -63,7 +66,7 @@ module.exports = {
     (CC Central Support on all tutor email by always using REPLY ALL).
 
     Sincerely,
-    Michell Brito
+    ${process.env.TUTOR_NAME}
     `;
   },
 };
