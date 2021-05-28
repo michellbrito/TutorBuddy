@@ -11,7 +11,7 @@ module.exports = {
         {
           headers: {
             Authorization:
-              `Bearer ${process.env.ZOOM_API_KEY}`, //the token is a variable which holds the token
+              `Bearer ${process.env.ZOOM_API_KEY}`,
           },
         }
       );
@@ -45,14 +45,14 @@ module.exports = {
         {
           headers: {
             Authorization:
-              `Bearer ${process.env.ZOOM_API_KEY}`, //the token is a variable which holds the token
+              `Bearer ${process.env.ZOOM_API_KEY}`,
           },
         }
       );
   
       const results = await response;
       const username = results.data.users[0].id;
-      return username  
+      return username;
     }
     catch(err){
       console.log("No response from zoom api");
