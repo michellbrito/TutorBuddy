@@ -69,4 +69,15 @@ module.exports = {
     ${process.env.TUTOR_NAME}
     `;
   },
+  timecard: async function(data){
+    return `
+    1. Date: ${data.date}
+    2. Time in: ${data.timein}
+    3. Time out: ${data.timeout}
+    4.Class Code: ${data.classCode}
+    5.Student: ${data.name}
+    6.B2B: ${data.b2b} 
+    7. ${data.reason}
+    `
+  }
 };

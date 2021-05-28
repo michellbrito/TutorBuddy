@@ -166,4 +166,26 @@ module.exports = {
     };
     sendEmail(emailData);
   },
+  sendTimecardCorrection: async function(data){
+    const googleSheet = require("./googleSheet");
+    const sendEmail = require("./sendEmail.js");
+    const emailTemplate = require("../templates/email");
+
+    const studentInfo = await googleSheet.getAllInfo(data.selectedStudent);
+    const studentData = {
+      date: data.date,
+      timein: data.timein,
+      timeout: data.timeout,
+      classCode: studentInfo.classCode,
+      name: studentInfo.studentName,
+      b2b: data.b2b,
+      reason: data.reason
+    }
+    const emailData = {
+      to: "centraltutorsupport@bootcampspot.com",
+      subject: "ADP Timecard correction",
+      text: await emailTemplate.timecard(studentData)
+    };
+    sendEmail(emailData);
+  }
 };
