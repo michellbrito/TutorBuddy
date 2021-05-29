@@ -15,16 +15,14 @@ module.exports = {
       const results = await response;
       const event = results.data.collection;
       return event;
-    }
-    catch(err) {
+    } catch (err) {
       console.log("No response from calendly api");
     }
-    
   },
   getEventInfo: async function (eventID) {
     require("dotenv").config();
     const axios = require("axios");
-    try{
+    try {
       const response = axios.get(
         `https://api.calendly.com/scheduled_events/${eventID}/invitees`,
         {
@@ -33,7 +31,7 @@ module.exports = {
           },
         }
       );
-  
+
       const results = await response;
       const invitee = results.data.collection[0];
       const inviteeInfo = {
@@ -41,34 +39,27 @@ module.exports = {
         email: invitee.email,
         timeZone: invitee.timezone,
       };
-  
+
       return inviteeInfo;
-    }
-    catch(err){
+    } catch (err) {
       console.log("No response from calendly api");
     }
-    
   },
-  getAdminUsername: async function(){
+  getAdminUsername: async function () {
     require("dotenv").config();
     const axios = require("axios");
-    try{
-      const response = axios.get(
-        `https://api.calendly.com//users/me`,
-        {
-          headers: {
-            Authorization: `Bearer ${process.env.CALENDLY_TOKEN}`,
-          },
-        }
-      );
-  
+    try {
+      const response = axios.get(`https://api.calendly.com//users/me`, {
+        headers: {
+          Authorization: `Bearer ${process.env.CALENDLY_TOKEN}`,
+        },
+      });
+
       const results = await response;
       const username = results.data.resource.uri;
-      return username  
-    }
-    catch(err){
+      return username;
+    } catch (err) {
       console.log("No response from calendly api");
     }
-    
-  }
+  },
 };

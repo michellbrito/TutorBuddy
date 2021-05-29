@@ -15,7 +15,7 @@ inquirer
         "Send one confirmation email",
         "Send student suvery",
         "Send email blast",
-        "Send timecard correction email"
+        "Send timecard correction email",
       ],
     },
     {
@@ -67,8 +67,6 @@ inquirer
       when: (answers) =>
         answers.menuOption === "Send timecard correction email",
     },
-
-    
   ])
   .then((answers) => {
     switch (answers.menuOption) {
