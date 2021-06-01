@@ -11,9 +11,8 @@ module.exports = {
     const tomorrow = await day.nextDay();
     const startTime = await day.utc();
     let calendlyEvents = await calendly.getEventID(startTime);
-    const eventsTommorow = events.filter((event) =>
-      event.eastern_time.includes(tomorrow)
-    );
+
+    const eventsTommorow = events.filter((event) => event.eastern_time.includes(tomorrow));
 
     let sessions = [];
     for (var i = 0; i < eventsTommorow.length; i++) {
@@ -185,6 +184,23 @@ module.exports = {
       to: "centraltutorsupport@bootcampspot.com",
       subject: "ADP Timecard correction",
       text: await emailTemplate.timecard(studentData),
+    };
+    sendEmail(emailData);
+  },
+  sendNewStudentEmail: async function (studentName) {
+    const googleSheet = require("./googleSheet");
+    const sendEmail = require("./sendEmail.js");
+    const emailTemplate = require("../templates/email");
+
+    const studentInfo = await googleSheet.getAllInfo(studentName);
+
+    const emailData = {
+      to: studentInfo.studentEmail,
+      cc: "centraltutorsupport@bootcampspot.com",
+      subject: "Coding Boot Camp - Tutorial available",
+      text: await emailTemplate.newStudent(
+        studentInfo.studentName.split(" ")[0]
+      ),
     };
     sendEmail(emailData);
   },

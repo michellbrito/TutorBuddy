@@ -16,6 +16,7 @@ async function startApp() {
           "Send one confirmation email",
           "Send student suvery",
           "Send email blast",
+          "Send new student email",
           "Send timecard correction email",
           "Exit",
         ],
@@ -31,7 +32,8 @@ async function startApp() {
         when: (answers) =>
           answers.menuOption === "Send student suvery" ||
           answers.menuOption === "Send one confirmation email" ||
-          answers.menuOption === "Send timecard correction email",
+          answers.menuOption === "Send timecard correction email" ||
+          answers.menuOption === "Send new student email",
       },
       {
         type: "input",
@@ -74,28 +76,25 @@ async function startApp() {
       switch (answers.menuOption) {
         case "Send email blast":
           main.sendBlastEmail();
-          startApp();
           break;
         case "Send confirmation emails":
           main.sendEmailConfirmation();
-          startApp();
           break;
         case "Send student suvery":
           main.sendStudentSurvey(answers.selectedStudent);
-          startApp();
           break;
         case "Send one confirmation email":
           main.sendOneEmailConfirmation(answers.selectedStudent);
-          startApp();
           break;
         case "Send timecard correction email":
           main.sendTimecardCorrection(answers);
-          startApp();
+          break;
+        case "Send new student email":
+          main.sendNewStudentEmail(answers.selectedStudent);
           break;
         case "Exit":
           process.exit();
         default:
-          startApp();
           break;
       }
     });
