@@ -80,4 +80,46 @@ module.exports = {
     7. ${data.reason}
     `;
   },
+  newStudent: async function (name) {
+    require("dotenv").config();
+    return `
+    Hi ${name},
+
+
+  Nice to meet you!  My name is ${process.env.TUTOR_NAME} and I was assigned to be your tutor. I am a computer science student who has also done a bootcamp so I understand the challenges you’re facing in the boot camp very well!  
+
+  I just sent you an invite to our tutoring Slack Team, Tutors & Students. This is where we will be communicating through Direct Message (DM).  Let me know if you don't see the invite or have any issues getting signed up.  Please send me a direct message once you create your account there. You can DM me on that Slack by using my Slack name @michellbrito. Make sure to have that Slack available on your mobile phone so that you can message me if there are problems with wifi, etc.
+
+  Below, I'll provide you with some times when I'm available for tutoring.  Let me know which of those time slots works best for you and we can schedule a session.  If our availability doesn’t sync, let me know and I'll see if we can figure something out.
+
+  Maximum tutorial sessions per week - our week is Monday - Sunday.
+
+  Part-time (6 month boot camp) students are entitled to 1 session per week.
+
+  Full-time (3 month boot camp) students are entitled to 2 sessions per week.
+
+  Schedule your session at: ${process.env.TUTOR_CALENDLY_LINK}
+
+  Each session takes place over Zoom.us (video chat/screen sharing) and lasts about 50 minutes. I'll email you the Zoom.us link the day before our scheduled time. (If you have not used zoom before please join the meeting at least 15 minutes early as it may have you download and install some software.)
+
+
+  All I need from you:
+
+  - Be on Slack 5 minutes before your time slot.
+
+  - Make sure your computer/mic/internet connection are working.
+
+  - Make sure your workspace is quiet and free from interruptions.
+
+  - At the end of the session, I will provide you with a link to a 2 minute evaluation form that you are required to complete.
+
+  Slack or email me with any questions.  I look forward to our first meeting!
+
+  CC Central Support on all email by always using REPLY ALL.
+
+  Sincerely,
+
+  ${process.env.TUTOR_NAME}
+`;
+  },
 };
