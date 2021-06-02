@@ -1,4 +1,4 @@
-# TutorBuddy
+# <img src="https://i.imgur.com/sjkXuW3.png" width="300" height="300">
 
 ## Instructions
 
@@ -14,14 +14,14 @@
 2. Click `CREATE CREDENTIALS` then click `API Key`
 3. Copy the API Key and save it to your `.env` file under `GOOGLE_API_KEY`
 
-    <img src="https://i.imgur.com/VbbT5xO.png" height='250px'>
+<img src="https://i.imgur.com/VbbT5xO.png" height='250px'>
 
 ### Google Sheet ID
 
 1. Visit your Google sheet that contains the list of students
 2. Copy the content of the URL after `/d/` and before `/edit`
 
-    <img src="https://i.imgur.com/xfgRMDb.png">
+<img src="https://i.imgur.com/xfgRMDb.png">
 
 3. Assign the copied content to the env variable `GOOGLE_SHEET_ID`
 
@@ -29,13 +29,15 @@
 
 1. Verify that your google sheet headers are the same as the picture
 
-    <img src="https://i.imgur.com/Fd3mtEg.png">
+<img src="https://i.imgur.com/Fd3mtEg.png">
 
 ### .env File
 
 1. Create your own .env file by doing `touch .env` in the project's directory
 2. The .env file needs the following variables
 
+   - `TUTOR_NAME` <- Your name that will appear in emails, ex: Michell Brito
+   - `TUTOR_CALENDLY_LINK` <- Your calendly link that students use to book tutoring sessions, ex: https://calendly.com/michell
    - `EMAIL_SERVICE` <- The name of your email provider, ex: `gmail`
    - `EMAIL_USERNAME` <- Your email username, ex: `jane@gmail.com`
    - `EMAIL_PASSWORD` <- Your email password, ex: `jane123`
