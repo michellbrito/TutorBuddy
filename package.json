@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
+    "prettier": "prettier --write '**/*.js'",
     "test": "jest"
   },
   "repository": {
@@ -28,6 +29,7 @@
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.33",
     "nodemailer": "^6.6.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "prettier": "^2.3.1"
   }
 }

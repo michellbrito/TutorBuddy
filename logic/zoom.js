@@ -52,4 +52,26 @@ module.exports = {
       console.log("No response from zoom api");
     }
   },
+  createZoomMeetings: async function (jsonData) {
+    require("dotenv").config();
+    const axios = require("axios");
+    const zoom_user = await this.getAdminUsername();
+    try {
+      const response = await axios.post(
+        `https://api.zoom.us/v2/users/${zoom_user}/meetings`,
+        jsonData,
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.ZOOM_API_KEY}`,
+          },
+        }
+      );
+
+      const results = await response;
+      const data = results.data;
+      return data;
+    } catch (err) {
+      console.log("No response from zoom api");
+    }
+  },
 };

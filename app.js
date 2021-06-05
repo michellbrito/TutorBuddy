@@ -12,6 +12,7 @@ async function startApp() {
         name: "menuOption",
         message: chalk.green("Welcome! What would you like to do?"),
         choices: [
+          "Create zoom meetings",
           "Send confirmation emails",
           "Send one confirmation email",
           "Send student suvery",
@@ -91,6 +92,9 @@ async function startApp() {
           break;
         case "Send new student email":
           main.sendNewStudentEmail(answers.selectedStudent);
+          break;
+        case "Create zoom meetings":
+          main.createZoomMeetings();
           break;
         case "Exit":
           process.exit();

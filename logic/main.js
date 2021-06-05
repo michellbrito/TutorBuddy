@@ -12,7 +12,9 @@ module.exports = {
     const startTime = await day.utc();
     let calendlyEvents = await calendly.getEventID(startTime);
 
-    const eventsTommorow = events.filter((event) => event.eastern_time.includes(tomorrow));
+    const eventsTommorow = events.filter((event) =>
+      event.eastern_time.includes(tomorrow)
+    );
 
     let sessions = [];
     for (var i = 0; i < eventsTommorow.length; i++) {
@@ -203,5 +205,40 @@ module.exports = {
       ),
     };
     sendEmail(emailData);
+  },
+  createZoomMeetings: async function () {
+    const zoom = require("./zoom.js");
+    const day = require("./day");
+    const calendly = require("./calendly");
+    const moment = require("moment-timezone");
+
+    const startTime = await day.utc();
+    const tomorrow = await day.nextDay();
+    let calendlyEvents = await calendly.getEventID(startTime);
+
+    for (var i = 0; i < calendlyEvents.length; i++) {
+      calendlyEvents[i].eastern_time = moment
+        .utc(calendlyEvents[i].start_time)
+        .tz("America/New_York")
+        .format("YYYY-MM-DD HH:mm:ss.SSS");
+    }
+
+    const eventsTommorow = calendlyEvents.filter((event) =>
+      event.eastern_time.includes(tomorrow)
+    );
+
+    for (var i = 0; i < eventsTommorow.length; i++) {
+      const time = eventsTommorow[i].eastern_time
+        .replace(" ", "T")
+        .split(".")[0];
+      const eventId = eventsTommorow[i].uri.split("scheduled_events/")[1];
+      const name = await (await calendly.getEventInfo(eventId)).name;
+      await zoom.createZoomMeetings({
+        topic: name,
+        type: 2,
+        start_time: time,
+        duration: 60,
+      });
+    }
   },
 };
