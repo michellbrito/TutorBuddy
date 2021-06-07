@@ -238,6 +238,7 @@ module.exports = {
         type: 2,
         start_time: time,
         duration: 60,
+        timezone: `${process.env.TUTOR_TIME_ZONE}`,
       });
     }
   },
