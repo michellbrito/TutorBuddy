@@ -123,7 +123,7 @@ module.exports = {
       name: student.name.split(" ")[0],
       time: moment(student.startTime)
         .tz(student.timezone)
-        .format("dddd MMM DD YYYY ha z"),
+        .format("dddd MMM DD YYYY h:mma z"),
       link: student.link,
     };
     const emailData = {
