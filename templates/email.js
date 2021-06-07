@@ -30,7 +30,7 @@ module.exports = {
 
         Maximum tutorial sessions per week - our week is Monday - Sunday.
         Part-time (6 month boot camp) students are entitled to 1 session per week.
-        Full-time (3 month boot camp) students are entitled to 2 sessions per week. 
+        Full-time (3 month boot camp) students are entitled to 2 sessions per week.
 
         If you have any questions or none of the times available work for you please let me know and I would be happy to help.
 
@@ -86,7 +86,7 @@ module.exports = {
     Hi ${name},
 
 
-  Nice to meet you!  My name is ${process.env.TUTOR_NAME} and I was assigned to be your tutor. I am a computer science student who has also done a bootcamp so I understand the challenges you’re facing in the boot camp very well!  
+  Nice to meet you!  My name is ${process.env.TUTOR_NAME} and I was assigned to be your tutor. ${process.env.INTRO_MESSAGE}  
 
   I just sent you an invite to our tutoring Slack Team, Tutors & Students. This is where we will be communicating through Direct Message (DM).  Let me know if you don't see the invite or have any issues getting signed up.  Please send me a direct message once you create your account there. You can DM me on that Slack by using my Slack name @michellbrito. Make sure to have that Slack available on your mobile phone so that you can message me if there are problems with wifi, etc.
 
