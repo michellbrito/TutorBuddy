@@ -22,4 +22,3 @@ test("verify we are able to get the user's timezone", async () => {
   const timezone = await calendly.getTimeZone();
   expect(timezone).toBeDefined();
 });
-

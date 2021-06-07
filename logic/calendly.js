@@ -62,7 +62,7 @@ module.exports = {
       console.log("No response from calendly api");
     }
   },
-  getTimeZone: async function(){
+  getTimeZone: async function () {
     require("dotenv").config();
     const axios = require("axios");
     try {
@@ -78,5 +78,5 @@ module.exports = {
     } catch (err) {
       console.log("No response from calendly api");
     }
-  }
+  },
 };
