@@ -60,7 +60,7 @@ async function startApp() {
       {
         type: "list",
         name: "b2b",
-        message: "What time were you suppose to clock out? ex: 11pm",
+        message: "Was this a back to back session?",
         choices: ["yes", "no"],
         when: (answers) =>
           answers.menuOption === "Send timecard correction email",
