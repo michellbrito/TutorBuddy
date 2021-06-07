@@ -54,7 +54,7 @@ module.exports = {
         name: sessions[i].name.split(" ")[0],
         time: moment(sessions[i].startTime)
           .tz(sessions[i].timezone)
-          .format("dddd MMM DD YYYY ha z"),
+          .format("dddd MMM DD YYYY h:mma z"),
         link: sessions[i].link,
       };
       const emailData = {
