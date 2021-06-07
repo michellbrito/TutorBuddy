@@ -62,4 +62,21 @@ module.exports = {
       console.log("No response from calendly api");
     }
   },
+  getTimeZone: async function(){
+    require("dotenv").config();
+    const axios = require("axios");
+    try {
+      const response = axios.get(`https://api.calendly.com//users/me`, {
+        headers: {
+          Authorization: `Bearer ${process.env.CALENDLY_TOKEN}`,
+        },
+      });
+
+      const results = await response;
+      const timezone = results.data.resource.timezone;
+      return timezone;
+    } catch (err) {
+      console.log("No response from calendly api");
+    }
+  }
 };

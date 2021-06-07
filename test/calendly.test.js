@@ -17,3 +17,9 @@ test("verify we are able to get a specific event info", async () => {
   const specificEvent = await calendly.getEventInfo(eventID);
   expect(specificEvent).toBeDefined();
 });
+
+test("verify we are able to get the user's timezone", async () => {
+  const timezone = await calendly.getTimeZone();
+  expect(timezone).toBeDefined();
+});
+
