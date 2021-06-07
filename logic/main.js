@@ -215,6 +215,7 @@ module.exports = {
     const startTime = await day.utc();
     const tomorrow = await day.nextDay();
     let calendlyEvents = await calendly.getEventID(startTime);
+    const timezone = await calendly.getTimeZone();
 
     for (var i = 0; i < calendlyEvents.length; i++) {
       calendlyEvents[i].eastern_time = moment
@@ -238,7 +239,7 @@ module.exports = {
         type: 2,
         start_time: time,
         duration: 60,
-        timezone: `${process.env.TUTOR_TIME_ZONE}`,
+        timezone: timezone,
       });
     }
   },
