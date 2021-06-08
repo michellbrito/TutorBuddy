@@ -1,3 +1,5 @@
+const googleSheet = require("./googleSheet");
+
 module.exports = {
   sendEmailConfirmation: async function () {
     const zoom = require("./zoom.js");
@@ -117,8 +119,11 @@ module.exports = {
     calendlyEvents = calendlyEvents.filter((event) =>
       event.start_time.includes(startTime.split("T")[0])
     );
+    const studentEmail = await (
+      await googleSheet.getAllInfo(studentName)
+    ).studentEmail;
+    const student = sessions.find((student) => student.email === studentEmail);
 
-    const student = sessions.find((student) => student.name === studentName);
     const studentData = {
       name: student.name.split(" ")[0],
       time: moment(student.startTime)
