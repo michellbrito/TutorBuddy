@@ -86,9 +86,9 @@ module.exports = {
     Hi ${name},
 
 
-  Nice to meet you!  My name is ${process.env.TUTOR_NAME} and I was assigned to be your tutor. ${process.env.INTRO_MESSAGE}  
+  Nice to meet you!  My name is ${process.env.TUTOR_NAME} and I was assigned to be your tutor. ${process.env.INTRO_MESSAGE}
 
-  I just sent you an invite to our tutoring Slack Team, Tutors & Students. This is where we will be communicating through Direct Message (DM).  Let me know if you don't see the invite or have any issues getting signed up.  Please send me a direct message once you create your account there. You can DM me on that Slack by using my Slack name @michellbrito. Make sure to have that Slack available on your mobile phone so that you can message me if there are problems with wifi, etc.
+  I just sent you an invite to our tutoring Slack Team, Tutors & Students. This is where we will be communicating through Direct Message (DM).  Let me know if you don't see the invite or have any issues getting signed up.  Please send me a direct message once you create your account there. You can DM me on that Slack by using my Slack name ${process.env.SLACK}. Make sure to have that Slack available on your mobile phone so that you can message me if there are problems with wifi, etc.
 
   Below, I'll provide you with some times when I'm available for tutoring.  Let me know which of those time slots works best for you and we can schedule a session.  If our availability doesn’t sync, let me know and I'll see if we can figure something out.
 

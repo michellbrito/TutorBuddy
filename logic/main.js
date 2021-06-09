@@ -61,7 +61,7 @@ module.exports = {
       };
       const emailData = {
         to: sessions[i].email,
-        subject: `Coding Boot Camp - Tutorial Confirmation ${studentData.time}`,
+        subject: `${process.env.BOOTCAMP_TYPE} Boot Camp - Tutorial Confirmation ${studentData.time}`,
         text: await emailTemplate.confirmation(studentData),
         cc: "centraltutorsupport@bootcampspot.com",
       };
@@ -133,7 +133,7 @@ module.exports = {
     };
     const emailData = {
       to: student.email,
-      subject: `Coding Boot Camp - Tutorial Confirmation ${studentData.time}`,
+      subject: `${process.env.BOOTCAMP_TYPE} Boot Camp - Tutorial Confirmation ${studentData.time}`,
       text: await emailTemplate.confirmation(studentData),
       cc: "centraltutorsupport@bootcampspot.com",
     };
@@ -147,7 +147,7 @@ module.exports = {
     const studentEmails = await googleSheet.getStudentEmails();
     const emailData = {
       cc: "centraltutorsupport@bootcampspot.com",
-      subject: "Coding Boot Camp - Tutoring available",
+      subject: `${process.env.BOOTCAMP_TYPE} Boot Camp - Tutoring available`,
       text: await emailTemplate.blast(),
       bcc: studentEmails,
     };
@@ -167,7 +167,7 @@ module.exports = {
 
     const emailData = {
       to: studentInfo.studentEmail,
-      subject: "Coding Boot Camp - Required Survey",
+      subject: `${process.env.BOOTCAMP_TYPE} Boot Camp - Required Survey`,
       text: await emailTemplate.survey(studentData),
     };
     sendEmail(emailData);
@@ -204,7 +204,7 @@ module.exports = {
     const emailData = {
       to: studentInfo.studentEmail,
       cc: "centraltutorsupport@bootcampspot.com",
-      subject: "Coding Boot Camp - Tutorial available",
+      subject: `${process.env.BOOTCAMP_TYPE} Boot Camp - Tutorial available`,
       text: await emailTemplate.newStudent(
         studentInfo.studentName.split(" ")[0]
       ),
