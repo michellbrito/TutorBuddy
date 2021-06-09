@@ -225,7 +225,7 @@ module.exports = {
     for (var i = 0; i < calendlyEvents.length; i++) {
       calendlyEvents[i].eastern_time = moment
         .utc(calendlyEvents[i].start_time)
-        .tz("America/New_York")
+        .tz(timezone)
         .format("YYYY-MM-DD HH:mm:ss.SSS");
     }
 
