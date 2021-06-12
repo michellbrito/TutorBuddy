@@ -5,7 +5,7 @@ module.exports = {
     const calendly_user = await this.getAdminUsername();
     try {
       const response = axios.get(
-        `https://api.calendly.com/scheduled_events?user=${calendly_user}&min_start_time=${startTime}`,
+        `https://api.calendly.com/scheduled_events?user=${calendly_user}&min_start_time=${startTime}&status=active`,
         {
           headers: {
             Authorization: `Bearer ${process.env.CALENDLY_TOKEN}`,
