@@ -24,7 +24,7 @@ module.exports = {
     const axios = require("axios");
     try {
       const response = axios.get(
-        `https://api.calendly.com/scheduled_events/${eventID}/invitees`,
+        `https://api.calendly.com/scheduled_events/${eventID}/invitees?status=active`,
         {
           headers: {
             Authorization: `Bearer ${process.env.CALENDLY_TOKEN}`,
