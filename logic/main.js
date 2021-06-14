@@ -71,7 +71,7 @@ module.exports = {
       }, i * 3000);
     }
   },
-  sendOneEmailConfirmation: async function (studentName) {
+  sendOneEmailConfirmation: async function (info) {
     const zoom = require("./zoom.js");
     const day = require("./day");
     const calendly = require("./calendly");
@@ -80,11 +80,11 @@ module.exports = {
     const emailTemplate = require("../templates/email");
 
     const events = await zoom.getUpcomingMeetings();
-    const tomorrow = await day.nextDay();
-    const startTime = await day.utc();
+    const sessionDay = await day.nextDay(info.todayOrTommorow);
+    const startTime = await day.utc(info.todayOrTommorow);
     let calendlyEvents = await calendly.getEventID(startTime);
     const eventsTommorow = events.filter((event) =>
-      event.eastern_time.includes(tomorrow)
+      event.eastern_time.includes(sessionDay)
     );
 
     let sessions = [];
@@ -120,7 +120,7 @@ module.exports = {
       event.start_time.includes(startTime.split("T")[0])
     );
     const studentEmail = await (
-      await googleSheet.getAllInfo(studentName)
+      await googleSheet.getAllInfo(info.selectedStudent)
     ).studentEmail;
     const student = sessions.find((student) => student.email === studentEmail);
 

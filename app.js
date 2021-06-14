@@ -72,6 +72,13 @@ async function startApp() {
         when: (answers) =>
           answers.menuOption === "Send timecard correction email",
       },
+      {
+        type: "list",
+        name: "todayOrTommorow",
+        message: "Is the session today or tommrow?",
+        choices: ["today", "tommrow"],
+        when: (answers) => answers.menuOption === "Send one confirmation email",
+      },
     ])
     .then((answers) => {
       switch (answers.menuOption) {
@@ -85,7 +92,7 @@ async function startApp() {
           main.sendStudentSurvey(answers.selectedStudent);
           break;
         case "Send one confirmation email":
-          main.sendOneEmailConfirmation(answers.selectedStudent);
+          main.sendOneEmailConfirmation(answers);
           break;
         case "Send timecard correction email":
           main.sendTimecardCorrection(answers);

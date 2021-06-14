@@ -1,5 +1,5 @@
 module.exports = {
-  nextDay: async function () {
+  nextDay: async function (data) {
     const ts = Date.now();
     const date_ob = new Date(ts);
     const date =
@@ -11,10 +11,14 @@ module.exports = {
         ? `0${date_ob.getMonth() + 1}`
         : date_ob.getMonth() + 1;
     const year = date_ob.getFullYear();
+    const fullDay =
+      data == "today"
+        ? `${year}-${month}-${date - 1}`
+        : `${year}-${month}-${date}`;
 
-    return `${year}-${month}-${date}`;
+    return fullDay;
   },
-  utc: async function () {
+  utc: async function (data) {
     const ts = Date.now();
     const date_ob = new Date(ts);
     const day =
@@ -26,7 +30,11 @@ module.exports = {
         ? `0${date_ob.getMonth() + 1}`
         : date_ob.getMonth() + 1;
     const year = date_ob.getFullYear();
+    const fullDay =
+      data == "today"
+        ? `${year}-${month}-${day - 1}T03:00:00.000000Z`
+        : `${year}-${month}-${day}T03:00:00.000000Z`;
 
-    return `${year}-${month}-${day}T03:00:00.000000Z`;
+    return fullDay;
   },
 };
