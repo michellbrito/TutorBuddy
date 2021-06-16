@@ -122,22 +122,29 @@ module.exports = {
     const studentEmail = await (
       await googleSheet.getAllInfo(info.selectedStudent)
     ).studentEmail;
-    const student = sessions.find((student) => student.email === studentEmail);
+    const student = sessions.filter(
+      (student) => student.email === studentEmail
+    );
 
-    const studentData = {
-      name: student.name.split(" ")[0],
-      time: moment(student.startTime)
-        .tz(student.timezone)
-        .format("dddd MMM DD YYYY h:mma z"),
-      link: student.link,
-    };
-    const emailData = {
-      to: student.email,
-      subject: `${process.env.BOOTCAMP_TYPE} Boot Camp - Tutorial Confirmation ${studentData.time}`,
-      text: await emailTemplate.confirmation(studentData),
-      cc: "centraltutorsupport@bootcampspot.com",
-    };
-    sendEmail(emailData);
+    for (var i = 0; i < student.length; i++) {
+      const studentData = {
+        name: student[i].name.split(" ")[0],
+        time: moment(student[i].startTime)
+          .tz(student[i].timezone)
+          .format("dddd MMM DD YYYY h:mma z"),
+        link: student[i].link,
+      };
+      const emailData = {
+        to: student[i].email,
+        subject: `${process.env.BOOTCAMP_TYPE} Boot Camp - Tutorial Confirmation ${studentData.time}`,
+        text: await emailTemplate.confirmation(studentData),
+        cc: "centraltutorsupport@bootcampspot.com",
+      };
+
+      setTimeout(function timer() {
+        sendEmail(emailData);
+      }, i * 5000);
+    }
   },
   sendBlastEmail: async function () {
     const googleSheet = require("./googleSheet");
