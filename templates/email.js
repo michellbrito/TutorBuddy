@@ -70,6 +70,7 @@ module.exports = {
     `;
   },
   timecard: async function (data) {
+    require("dotenv").config();
     return `
     1. Date: ${data.date}
     2. Time in: ${data.timein}
@@ -78,6 +79,9 @@ module.exports = {
     5.Student: ${data.name}
     6.B2B: ${data.b2b} 
     7. ${data.reason}
+
+    Thank you,
+    ${process.env.TUTOR_NAME}
     `;
   },
   newStudent: async function (name) {
