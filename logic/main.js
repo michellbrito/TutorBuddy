@@ -83,8 +83,11 @@ module.exports = {
     const sessionDay = await day.nextDay(info.todayOrTommorow);
     const startTime = await day.utc(info.todayOrTommorow);
     let calendlyEvents = await calendly.getEventID(startTime);
-    const eventsTommorow = events.filter((event) =>
+    let eventsTommorow = events.filter((event) =>
       event.eastern_time.includes(sessionDay)
+    );
+    eventsTommorow = eventsTommorow.filter((event) =>
+      event.name.includes(info.selectedStudent)
     );
 
     let sessions = [];
