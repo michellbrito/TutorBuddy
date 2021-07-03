@@ -13,12 +13,11 @@ module.exports = {
     const tomorrow = await day.nextDay();
     const startTime = await day.utc();
     let calendlyEvents = await calendly.getEventID(startTime);
-
     const eventsTommorow = events.filter((event) =>
       event.eastern_time.includes(tomorrow)
     );
-
     let sessions = [];
+
     for (var i = 0; i < eventsTommorow.length; i++) {
       const eventId = calendlyEvents
         .find(
@@ -46,7 +45,6 @@ module.exports = {
     sessions = sessions.filter((event) =>
       event.easternTime.includes(startTime.split("T")[0])
     );
-
     calendlyEvents = calendlyEvents.filter((event) =>
       event.start_time.includes(startTime.split("T")[0])
     );
@@ -83,14 +81,12 @@ module.exports = {
     const sessionDay = await day.nextDay(info.todayOrTommorow);
     const startTime = await day.utc(info.todayOrTommorow);
     let calendlyEvents = await calendly.getEventID(startTime);
-    let eventsTommorow = events.filter((event) =>
-      event.eastern_time.includes(sessionDay)
-    );
-    eventsTommorow = eventsTommorow.filter((event) =>
-      event.name.includes(info.selectedStudent)
-    );
+    const eventsTommorow = events
+      .filter((event) => event.eastern_time.includes(sessionDay))
+      .filter((event) => event.name.includes(info.selectedStudent));
 
     let sessions = [];
+
     for (var i = 0; i < eventsTommorow.length; i++) {
       const eventId = calendlyEvents
         .find(
