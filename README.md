@@ -1,51 +1,93 @@
-<img src="https://i.imgur.com/sjkXuW3.png" width="300" height="300">
 
-## Instructions
+![Logo](https://i.imgur.com/sjkXuW3.png)
 
-1. Clone the repo - https://github.com/michellbrito/Tutor-Buddy.git
-2. Setup the Google API, .env file
-3. `cd` into the repo and do `npm start`
+    
+# Tutor Buddy
 
-## Setup
+This is a terminal based application to help tutors with the daily task of being a tutor.
 
-### Google Sheet API Authentication
 
-1. Visit Google's credentials page - https://console.cloud.google.com/apis/credentials
-2. Click `CREATE CREDENTIALS` then click `API Key`
-3. Copy the API Key and save it to your `.env` file under `GOOGLE_API_KEY`
+## Features
 
-<img src="https://i.imgur.com/VbbT5xO.png" height='250px'>
+- Create zoom meetings for the next day's tutoring sessions
+- Send confirmation emails for the next day's tutoring sessions
+- Send a confirmation email to a specific student for the same day or next day tutoring session 
+- Send the weekly email blast
+- Send a introduction email to a new student
+- Send timecard correction email to centralsupport
 
-### Google Sheet ID
+  
+## Installation 
 
-1. Visit your Google sheet that contains the list of students
-2. Copy the content of the URL after `/d/` and before `/edit`
 
-<img src="https://i.imgur.com/xfgRMDb.png">
 
-3. Assign the copied content to the env variable `GOOGLE_SHEET_ID`
+```bash 
+  git clone https://github.com/michellbrito/Tutor-Buddy.git
+  cd Tutor-Buddy
+  npm i
+  npm start
+```
+    
+## Environment Variables
 
-### Google Sheet Headers
+To run this project, you will need to add the following environment variables to your .env file
 
-1. Verify that your google sheet headers are the same as the picture
+`TUTOR_NAME`
 
-<img src="https://i.imgur.com/Fd3mtEg.png">
+`TUTOR_TIME_ZONE`
 
-### .env File
+`BOOTCAMP_TYPE`
 
-1. Create your own .env file by doing `touch .env` in the project's directory
-2. The .env file needs the following variables
+`SLACK`
 
-   - `TUTOR_NAME` <- Your name that will appear in emails, ex: Michell Brito
-   - `TUTOR_CALENDLY_LINK` <- Your calendly link that students use to book tutoring sessions, ex: https://calendly.com/michell
-   - `EMAIL_SERVICE` <- The name of your email provider, ex: `gmail`
-   - `EMAIL_USERNAME` <- Your email username, ex: `jane@gmail.com`
-   - `EMAIL_PASSWORD` <- Your email password, ex: `jane123`
-   - `GOOGLE_SHEET_ID` <- The id of the google sheet that contains your students, ex: `1uGr_RDNCDGjHI2v7bVHrRDFcQWERYTdtNqpQuQX_3Rw`
-   - `GOOGLE_API_KEY` <- The API key that gets generated from Google's credentials page, ex: `AIQWyDNAbMOFWZ6OLwWTnUpQUEREYCAMy7HaTc`
-   - `CALENDLY_TOKEN` <- The calendly token generated from calendly, ex: `eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovLQWYERY....`
-   - `ZOOM_API_KEY` <- The JWT Token generated from zoom, ex: `eyJ0eXAiOiJKV1QiLCQWUERY.eyJhdWQiOm51bGwss....`
+`INTRO_MESSAGE`
 
-    <img src="https://i.imgur.com/LMNlPhD.png" height='250px'>
+`TUTOR_CALENDLY_LINK`
 
-## Demo
+`EMAIL_SERVICE`
+
+`EMAIL_USERNAME`
+
+`EMAIL_PASSWORD`
+
+`GOOGLE_SHEET_ID`
+
+`GOOGLE_API_KEY`
+
+`CALENDLY_TOKEN`
+
+`ZOOM_API_KEY`
+
+  
+## Running Tests
+
+To run tests, run the following command
+
+```bash
+  npm run test
+```
+
+To run a specific test, run the following commands
+
+```bash
+  npm run test calendly
+```
+
+```bash
+  npm run test google
+```
+
+```bash
+  npm run test zoom
+```
+  
+## Authors
+
+- [@michellbrito](https://www.github.com/michellbrito)
+
+  
+## Feedback
+
+If you have any feedback, please reach out to me on slack
+
+  
