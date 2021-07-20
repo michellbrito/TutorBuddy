@@ -80,14 +80,20 @@ module.exports = {
     const events = await zoom.getUpcomingMeetings();
     const sessionDay = await day.nextDay(info.todayOrTommorow);
     const startTime = await day.utc(info.todayOrTommorow);
+
     let calendlyEvents = await calendly.getEventID(startTime);
     const eventsTommorow = events
       .filter((event) => event.eastern_time.includes(sessionDay))
-      .filter((event) => event.name.includes(info.selectedStudent));
+      .filter((event) =>
+        event.name
+          .toLocaleLowerCase()
+          .includes(info.selectedStudent.toLocaleLowerCase())
+      );
 
     let sessions = [];
 
     for (var i = 0; i < eventsTommorow.length; i++) {
+      console.log(`${eventsTommorow[i].start_time}`);
       const eventId = calendlyEvents
         .find(
           (event) =>
@@ -118,6 +124,7 @@ module.exports = {
     calendlyEvents = calendlyEvents.filter((event) =>
       event.start_time.includes(startTime.split("T")[0])
     );
+
     const studentEmail = await (
       await googleSheet.getAllInfo(info.selectedStudent)
     ).studentEmail;
